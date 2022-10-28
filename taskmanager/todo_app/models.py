@@ -25,7 +25,7 @@ class Task(models.Model):
     is_completed = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return f"<<Task : {self.description}>>"
+        return f"{self.description}"
 
     def __repr__(self) -> str:
         return f"<<Task | ID: {self.id} description: {self.description} >>"
