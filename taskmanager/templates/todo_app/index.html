@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "todo_app/base.html" %} {% block body_block %}
+
+<div class="flex gap-10">
+	<nav class="navivagtion w-24 h-screen bg-black text-white">
+		<a href="{% url 'index' %}">Home</a>
+		<ul>
+			<li class="nav-link">
+				<a href="{% url 'todo_app:project' %}">Projects</a>
+				<span class="sidebar-tooltip">Project</span>
+			</li>
+			<li class="nav-link"><a href="{% url 'todo_app:task' %}">Tasks</a></li>
+			<li class="nav-link"><a href="">Chat</a></li>
+		</ul>
+	</nav>
+
+	<main class="flex-grow max-w-4xl mx-auto">
+		{% block main_block %}
+		<h1 class="m-auto text-5xl my-10 text-center">All Tasks</h1>
+		{% if all_task %}
+
+		<ul>
+			{% for task in all_task %}
+			<li>
+				<input type="checkbox" name="task" id="" />
+				<span>{{ task.description }}</span>
+			</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>No task found</p>
+
+		{% endif %} {% endblock %}
+	</main>
+</div>
+{% endblock %}
